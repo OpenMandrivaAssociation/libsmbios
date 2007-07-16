@@ -2,7 +2,7 @@
 %define lib_name %mklibname smbios %{lib_major}
 
 Name: libsmbios
-Version: 0.13.2
+Version: 0.13.6
 Release: %mkrel 1
 License: GPL/Open Software License
 Group: System/Libraries
@@ -89,7 +89,7 @@ rm -f %{buildroot}/%{_bindir}/{activateCmosToken,ascii2enUS_scancode,createUnitT
 
 %files -n %{lib_name}-devel
 %defattr(-,root,root)
-%doc COPYING-GPL COPYING-OSL README bins/getopts_LICENSE.txt
+%doc COPYING-GPL COPYING-OSL README
 /usr/include/smbios
 %{_libdir}/*.a
 %{_libdir}/*.so
@@ -97,7 +97,7 @@ rm -f %{buildroot}/%{_bindir}/{activateCmosToken,ascii2enUS_scancode,createUnitT
 
 %files bin 
 %defattr(-,root,root)
-%doc COPYING-GPL COPYING-OSL README bins/getopts_LICENSE.txt
+%doc COPYING-GPL COPYING-OSL README bin-unsupported/getopts_LICENSE.txt
 %{_bindir}/assetTag
 %{_bindir}/dellBiosUpdate
 %{_bindir}/getSystemId
@@ -107,6 +107,5 @@ rm -f %{buildroot}/%{_bindir}/{activateCmosToken,ascii2enUS_scancode,createUnitT
 %{_bindir}/verifySmiPassword
 %{_bindir}/wakeupCtl
 %{_bindir}/dellLcdBrightness
-
-
-
+%{_bindir}/dellLEDCtl
+%{_bindir}/dellWirelessCtl
