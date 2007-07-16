@@ -1,5 +1,6 @@
-%define lib_major 1
-%define lib_name %mklibname smbios %{lib_major}
+%define major 1
+%define libname %mklibname smbios %{major}
+%define develname %mklibname smbios -d
 
 Name: libsmbios
 Version: 0.13.6
@@ -9,7 +10,7 @@ Group: System/Libraries
 Source: http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 URL: http://linux.dell.com/libsmbios/main
 Summary: Open BIOS parsing libs
-Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root
+
 
 # libsmbios only ever makes sense on intel compatible arches
 # no DMI tables on ppc, s390, etc.
@@ -17,16 +18,17 @@ ExclusiveArch: x86_64 ia64 %{ix86}
 
 BuildRequires: libxml2-devel
 BuildRequires: cppunit-devel
+Buildroot: %{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Libsmbios is a library and utilities that can be used by client programs 
 to get information from standard BIOS tables, such as the SMBIOS table.
 
-%package -n %{lib_name}
+%package -n %{libname}
 Summary: Libsmbios shared libraries
 Group: System/Libraries
 
-%description -n %{lib_name}
+%description -n %{libname}
 Libsmbios is a library and utilities that can be used by client programs 
 to get information from standard BIOS tables, such as the SMBIOS table.
 
@@ -42,18 +44,19 @@ to get information from standard BIOS tables, such as the SMBIOS table.
 This package contains some sample binaries that use libsmbios.
 
 
-%package -n %{lib_name}-devel
+%package -n %{develname}
 Summary: Development headers and archives
 Group: Development/C++
-Requires: %{lib_name} = %{version}
+Requires: %{libname} = %{version}=%{release}
 Provides: %{name}-devel = %{version}-%{release}
+Obsoletes: %mklibname smbios 1 -d
 
-%description -n %{lib_name}-devel
+%description -n %{develname}
 Libsmbios is a library and utilities that can be used by client programs 
 to get information from standard BIOS tables, such as the SMBIOS table.
 
 This package contains the headers and .a files necessary to compile new 
-client programs against libsmbios
+client programs against libsmbios.
 
 
 %prep
@@ -78,22 +81,21 @@ rm -f %{buildroot}/%{_bindir}/{activateCmosToken,ascii2enUS_scancode,createUnitT
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING-GPL COPYING-OSL README
-%{_libdir}/libsmbios.so.%{lib_major}*
-%{_libdir}/libsmbiosxml.so.%{lib_major}*
+%{_libdir}/libsmbios.so.%{major}*
+%{_libdir}/libsmbiosxml.so.%{major}*
 
-%files -n %{lib_name}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING-GPL COPYING-OSL README
 /usr/include/smbios
 %{_libdir}/*.a
 %{_libdir}/*.so
-
 
 %files bin 
 %defattr(-,root,root)
