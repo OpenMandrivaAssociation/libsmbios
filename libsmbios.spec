@@ -4,7 +4,7 @@
 
 Name: libsmbios
 Version: 0.13.6
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL/Open Software License
 Group: System/Libraries
 Source: http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
@@ -47,9 +47,9 @@ This package contains some sample binaries that use libsmbios.
 %package -n %{develname}
 Summary: Development headers and archives
 Group: Development/C++
-Requires: %{libname} = %{version}=%{release}
+Requires: %{libname} = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %mklibname smbios 1 -d
+Obsoletes: %{libname}-devel
 
 %description -n %{develname}
 Libsmbios is a library and utilities that can be used by client programs 
