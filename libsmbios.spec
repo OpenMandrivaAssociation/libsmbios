@@ -2,23 +2,20 @@
 %define libname %mklibname smbios %{major}
 %define develname %mklibname smbios -d
 
-Name: libsmbios
-Version: 0.13.6
-Release: %mkrel 2
-License: GPL/Open Software License
-Group: System/Libraries
-Source: http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
-URL: http://linux.dell.com/libsmbios/main
-Summary: Open BIOS parsing libs
-
-
+Name:       libsmbios
+Version:    0.13.10
+Release:    %mkrel 1
+Summary:    Open BIOS parsing libs
+License:    GPL/Open Software License
+Group:      System/Libraries
+URL:        http://linux.dell.com/libsmbios/main
+Source:     http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 # libsmbios only ever makes sense on intel compatible arches
 # no DMI tables on ppc, s390, etc.
 ExclusiveArch: x86_64 ia64 %{ix86}
-
 BuildRequires: libxml2-devel
 BuildRequires: cppunit-devel
-Buildroot: %{_tmppath}/%{name}-%{version}-buildroot
+Buildroot:      %{_tmppath}/%{name}-%{version}
 
 %description
 Libsmbios is a library and utilities that can be used by client programs 
@@ -67,8 +64,7 @@ client programs against libsmbios.
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
+rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %{buildroot}/%{_includedir}
@@ -79,7 +75,7 @@ rm -f %{buildroot}/%{_libdir}/lib*.la
 rm -f %{buildroot}/%{_bindir}/{activateCmosToken,ascii2enUS_scancode,createUnitTestFiles,disable_console_redir,dumpCmos,getPasswordFormat,isCmosTokenActive,probes,smitest,stateByteCtl,upBootCtl,dumpSmbios}
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
