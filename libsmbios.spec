@@ -15,7 +15,6 @@ Source:     http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/
 ExclusiveArch: x86_64 ia64 %{ix86}
 BuildRequires: libxml2-devel
 BuildRequires: cppunit-devel
-Buildroot:      %{_tmppath}/%{name}-%{version}
 
 %description
 Libsmbios is a library and utilities that can be used by client programs 
