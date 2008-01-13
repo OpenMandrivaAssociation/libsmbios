@@ -4,7 +4,7 @@
 
 Name:       libsmbios
 Version:    0.13.10
-Release:    %mkrel 1
+Release:    %mkrel 2
 Summary:    Open BIOS parsing libs
 License:    GPL/Open Software License
 Group:      System/Libraries
