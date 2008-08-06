@@ -5,7 +5,7 @@
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
 Version:	2.0.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+ or OSL
 Group:		System/Libraries
 URL:		http://linux.dell.com/libsmbios/main
