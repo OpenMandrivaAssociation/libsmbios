@@ -93,7 +93,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc COPYING-GPL COPYING-OSL README
 %{_libdir}/*.so.%{major}*
-%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
@@ -111,6 +110,7 @@ rm -rf %{buildroot}
 %{_sbindir}/dellBiosUpdate
 %{_sbindir}/dellLEDCtl
 %{_sbindir}/dellLcdBrightness
+%{_sbindir}/dellMediaDirectCtl
 %{_sbindir}/dellWirelessCtl
 %{_sbindir}/disable_console_redir
 %{_sbindir}/dumpCmos
