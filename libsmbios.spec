@@ -4,12 +4,12 @@
 
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
-Version:	2.0.3
+Version:	2.2.5
 Release:	%mkrel 1
 License:	GPLv2+ or OSL
 Group:		System/Libraries
 URL:		http://linux.dell.com/libsmbios/main
-Source:		http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:		http://linux.dell.com/libsmbios/download/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 # libsmbios only ever makes sense on intel compatible arches
 # no DMI tables on ppc, s390, etc.
 ExclusiveArch:	x86_64 ia64 %{ix86}
@@ -62,7 +62,9 @@ client programs against libsmbios.
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+	    --disable-rpath
+
 %make
 
 %check
