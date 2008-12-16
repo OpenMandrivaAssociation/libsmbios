@@ -17,6 +17,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	cppunit-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
+%py_requires
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -42,7 +43,6 @@ Libsmbios is a library and utilities that can be used by client programs
 to get information from standard BIOS tables, such as the SMBIOS table.
 
 This package contains some sample binaries that use libsmbios.
-
 
 %package -n %{develname}
 Summary:	Development headers and archives
@@ -75,12 +75,18 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %{buildroot}/%{_includedir}
-cp -a include/smbios %{buildroot}/%{_includedir}
+cp -a src/include/smbios %{buildroot}/%{_includedir}
+cp -a src/include/smbios_c %{buildroot}/%{_includedir}
 rm -f %{buildroot}/%{_libdir}/lib*.la
 
 # (tpg) looks like hal need this
 ln -s %{_sbindir}/dellWirelessCtl %{buildroot}%{_bindir}/dellWirelessCtl
 
+# (tpg) wtf is yum ? ;)
+rm -rf %{buildroot}%{_libdir}/yum-plugins
+rm -rf %{buildroot}%{_sysconfdir}/yum
+
+%find_lang %{name}
 %clean
 rm -rf %{buildroot}
 
@@ -93,40 +99,19 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING-GPL COPYING-OSL README
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_includedir}/smbios
+%{_includedir}/smbios*
 %{_libdir}/*.a
 %{_libdir}/*.so
 
-%files utils
+%files utils -f %{name}.lang
 %defattr(-,root,root)
-%doc bin-unsupported/getopts_LICENSE.txt
-%{_sbindir}/activateCmosToken
-%{_sbindir}/ascii2enUS_scancode
-%{_sbindir}/assetTag
-%{_sbindir}/createUnitTestFiles
-%{_sbindir}/dellBiosUpdate
-%{_sbindir}/dellLEDCtl
-%{_sbindir}/dellLcdBrightness
-%{_sbindir}/dellMediaDirectCtl
-%{_sbindir}/dellWirelessCtl
-%{_sbindir}/disable_console_redir
-%{_sbindir}/dumpCmos
-%{_sbindir}/dumpSmbios
-%{_sbindir}/getPasswordFormat
-%{_sbindir}/getSystemId
-%{_sbindir}/isCmosTokenActive
-%{_sbindir}/mkbiospkg.sh
-%{_sbindir}/probes
-%{_sbindir}/propertyTag
-%{_sbindir}/serviceTag
-%{_sbindir}/smitest
-%{_sbindir}/stateByteCtl
-%{_sbindir}/upBootCtl
-%{_sbindir}/verifySmiPassword
-%{_sbindir}/wakeupCtl
-%{_bindir}/dellWirelessCtl
+%doc AUTHORS README TODO ChangeLog doc/*
+%config(noreplace) %{_sysconfdir}/%{name}/*.conf
+%{_sbindir}/*
+%{_bindir}/*
+%{_datadir}/smbios-utils
+%{python_sitearch}/%{name}_c
