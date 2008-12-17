@@ -114,4 +114,4 @@ rm -rf %{buildroot}
 %{_sbindir}/*
 %{_bindir}/*
 %{_datadir}/smbios-utils
-%{python_sitearch}/%{name}_c
+%{python_sitelib}/%{name}_c
