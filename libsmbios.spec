@@ -83,7 +83,7 @@ rm -f %{buildroot}/%{_libdir}/lib*.la
 ln -s %{_sbindir}/dellWirelessCtl %{buildroot}%{_bindir}/dellWirelessCtl
 
 # (tpg) wtf is yum ? ;)
-rm -rf %{buildroot}/lib/yum-plugins
+rm -rf %{buildroot}%{_prefix}/lib/yum-plugins
 rm -rf %{buildroot}%{_sysconfdir}/yum
 
 %find_lang %{name}
