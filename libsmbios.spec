@@ -5,7 +5,7 @@
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
 Version:	2.2.5
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+ or OSL
 Group:		System/Libraries
 URL:		http://linux.dell.com/libsmbios/main
@@ -83,7 +83,7 @@ rm -f %{buildroot}/%{_libdir}/lib*.la
 ln -s %{_sbindir}/dellWirelessCtl %{buildroot}%{_bindir}/dellWirelessCtl
 
 # (tpg) wtf is yum ? ;)
-rm -rf %{buildroot}%{_libdir}/yum-plugins
+rm -rf %{buildroot}/lib/yum-plugins
 rm -rf %{buildroot}%{_sysconfdir}/yum
 
 %find_lang %{name}
