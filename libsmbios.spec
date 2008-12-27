@@ -5,7 +5,7 @@
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
 Version:	2.2.5
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+ or OSL
 Group:		System/Libraries
 URL:		http://linux.dell.com/libsmbios/main
@@ -17,7 +17,6 @@ BuildRequires:	libxml2-devel
 BuildRequires:	cppunit-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-%py_requires
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -37,6 +36,7 @@ Summary:	The "supported" sample binaries that use libsmbios
 Group:		System/Configuration/Hardware
 Provides:	%{name}-bin = %{version}-%{release}
 Obsoletes:	%{name}-bin < 2.0.2
+%py_requires -d
 
 %description utils
 Libsmbios is a library and utilities that can be used by client programs 
@@ -64,7 +64,6 @@ client programs against libsmbios.
 %build
 %configure2_5x \
 	    --disable-rpath
-
 %make
 
 %check
