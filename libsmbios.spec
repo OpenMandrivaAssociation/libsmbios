@@ -85,7 +85,8 @@ ln -s %{_sbindir}/dellWirelessCtl %{buildroot}%{_bindir}/dellWirelessCtl
 rm -rf %{buildroot}%{_prefix}/lib/yum-plugins
 rm -rf %{buildroot}%{_sysconfdir}/yum
 
-%find_lang %{name}
+%find_lang %{name} %{name}-2.2
+
 %clean
 rm -rf %{buildroot}
 
@@ -105,7 +106,8 @@ rm -rf %{buildroot}
 %{_includedir}/smbios*
 %{_libdir}/*.a
 %{_libdir}/*.so
-
+%{_libdir}/pkgconfig/libsmbios_c.pc
+  
 %files utils -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS README TODO ChangeLog doc/*
