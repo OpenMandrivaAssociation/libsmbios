@@ -4,7 +4,7 @@
 
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
-Version:	2.2.13
+Version:	2.2.16
 Release:	%mkrel 1
 License:	GPLv2+ or OSL
 Group:		System/Libraries
