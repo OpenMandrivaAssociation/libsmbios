@@ -4,7 +4,7 @@
 
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
-Version:	2.2.16
+Version:	2.2.19
 Release:	%mkrel 1
 License:	GPLv2+ or OSL
 Group:		System/Libraries
@@ -106,8 +106,8 @@ rm -rf %{buildroot}
 %{_includedir}/smbios*
 %{_libdir}/*.a
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/libsmbios_c.pc
-  
+%{_libdir}/pkgconfig/libsmbios*.pc
+
 %files utils -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS README TODO ChangeLog doc/*
