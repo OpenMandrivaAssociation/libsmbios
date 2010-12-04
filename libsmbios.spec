@@ -4,7 +4,7 @@
 
 Summary:	Open BIOS parsing libs
 Name:		libsmbios
-Version:	2.2.19
+Version:	2.2.26
 Release:	%mkrel 1
 License:	GPLv2+ or OSL
 Group:		System/Libraries
@@ -61,13 +61,16 @@ client programs against libsmbios.
 %prep
 %setup -q
 
+#fix tests
+find src/ -name *.py -exec sed -i -e 's|python2|python|g' {} \;
+
 %build
 %configure2_5x \
 	    --disable-rpath
 %make
 
 %check
-make check
+%make check
 
 %install
 rm -rf %{buildroot}
