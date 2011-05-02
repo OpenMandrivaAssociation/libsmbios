@@ -64,6 +64,8 @@ client programs against libsmbios.
 #fix tests
 find src/ -name *.py -exec sed -i -e 's|python2|python|g' {} \;
 
+sed -i -e 's#-Werror ##' Makefile.*
+
 %build
 %configure2_5x \
 	    --disable-rpath
