@@ -90,7 +90,7 @@ ln -s %{_sbindir}/dellWirelessCtl %{buildroot}%{_bindir}/dellWirelessCtl
 rm -rf %{buildroot}%{_prefix}/lib/yum-plugins
 rm -rf %{buildroot}%{_sysconfdir}/yum
 
-%find_lang %{name} %{name}-2.2
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
@@ -121,3 +121,103 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/smbios-utils
 %{python_sitelib}/%{name}_c
+
+
+%changelog
+* Mon May 02 2011 Funda Wang <fwang@mandriva.org> 2.2.26-2mdv2011.0
++ Revision: 661760
+- disable Werror
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - mass rebuild
+
+* Sat Dec 04 2010 Jani Välimaa <wally@mandriva.org> 2.2.26-1mdv2011.0
++ Revision: 609521
+- new version 2.2.26
+
+* Fri Jan 01 2010 Tomasz Pawel Gajc <tpg@mandriva.org> 2.2.19-1mdv2011.0
++ Revision: 484670
+- update to new version 2.2.19
+
+* Tue May 26 2009 Christophe Fergeau <cfergeau@mandriva.com> 2.2.16-1mdv2010.0
++ Revision: 379926
+- new upstream release
+
+* Tue Feb 10 2009 Tomasz Pawel Gajc <tpg@mandriva.org> 2.2.13-1mdv2009.1
++ Revision: 339287
+- update to new version 2.2.13
+
+* Tue Jan 20 2009 Tomasz Pawel Gajc <tpg@mandriva.org> 2.2.9-1mdv2009.1
++ Revision: 331800
+- fix file list
+- update to new version 2.2.9
+
+* Sat Dec 27 2008 Funda Wang <fwang@mandriva.org> 2.2.5-5mdv2009.1
++ Revision: 319685
+- rebuild for new python
+
+* Sun Dec 21 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 2.2.5-4mdv2009.1
++ Revision: 317040
+- bump tag for hungry bs
+- fix last commit
+- remove useless stuff also for x86_64
+- use right macro
+- fix file list
+- now lot of utils are python based instead of C++ blobs
+- update to new version 2.2.5
+- kill rpath
+
+* Sun Sep 14 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 2.0.3-1mdv2009.0
++ Revision: 284773
+- fix file list
+- update to new version 2.0.3
+
+* Wed Aug 06 2008 Thierry Vignaud <tv@mandriva.org> 2.0.2-2mdv2009.0
++ Revision: 264891
+- rebuild early 2009.0 package (before pixel changes)
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Thu May 01 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 2.0.2-1mdv2009.0
++ Revision: 199830
+- update to the lastest upstream release
+- add missing buildrequires on doxygen and graphviz
+- rename libsmbios-bin to libsmbios-utils, as it looks more appropriate
+- bump major
+- new license policy
+- add symlinks for hal
+- enable checks
+- spec file clean
+
+* Tue Mar 04 2008 Oden Eriksson <oeriksson@mandriva.com> 0.13.10-3mdv2008.1
++ Revision: 178996
+- rebuild
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Mon Sep 03 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.13.10-1mdv2008.0
++ Revision: 78857
+- new version
+
+* Tue Jul 17 2007 Funda Wang <fwang@mandriva.org> 0.13.6-2mdv2008.0
++ Revision: 52938
+- fix develpackage requires typo
+
+* Tue Jul 17 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.13.6-1mdv2008.0
++ Revision: 52808
+- new devel library policy
+- spec file clean
+- new version
+- fix file list
+
+
+* Thu Mar 08 2007 Frederic Crozat <fcrozat@mandriva.com> 0.13.2-1mdv2007.1
++ Revision: 136302
+- Import libsmbios
+
