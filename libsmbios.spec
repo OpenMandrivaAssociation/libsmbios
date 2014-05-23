@@ -4,6 +4,7 @@
 %define devname %mklibname smbios -d
 
 Summary:	Open BIOS parsing libs
+
 Name:		libsmbios
 Version:	2.2.28
 Release:	2
@@ -25,6 +26,7 @@ to get information from standard BIOS tables, such as the SMBIOS table.
 
 %package -n %{libname}
 Summary:	Libsmbios shared libraries
+
 Group:		System/Libraries
 
 %description -n %{libname}
@@ -33,6 +35,7 @@ to get information from standard BIOS tables, such as the SMBIOS table.
 
 %package -n %{libsmbios_c}
 Summary:	Libsmbios shared libraries
+
 Group:		System/Libraries
 Conflicts:	%{_lib}smbios2 < 2.2.28-2
 
@@ -42,9 +45,10 @@ to get information from standard BIOS tables, such as the SMBIOS table.
 
 %package utils
 Summary:	The "supported" sample binaries that use libsmbios
+
 Group:		System/Configuration/Hardware
 Provides:	%{name}-bin = %{version}-%{release}
-%py_requires -d
+BuildRequires:  python-devel
 
 %description utils
 Libsmbios is a library and utilities that can be used by client programs 
@@ -54,6 +58,7 @@ This package contains some sample binaries that use libsmbios.
 
 %package -n %{devname}
 Summary:	Development headers and archives
+
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libsmbios_c} = %{version}-%{release}
@@ -113,5 +118,5 @@ rm -rf %{buildroot}%{_libdir}/*.a
 %{_sbindir}/*
 %{_bindir}/*
 %{_datadir}/smbios-utils
-%{python_sitelib}/%{name}_c
+%{py_puresitedir}/%{name}_c
 
