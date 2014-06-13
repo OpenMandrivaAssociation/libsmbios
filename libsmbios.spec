@@ -7,7 +7,7 @@ Summary:	Open BIOS parsing libs
 
 Name:		libsmbios
 Version:	2.2.28
-Release:	2
+Release:	3
 License:	GPLv2+ or OSL
 Group:		System/Libraries
 Url:		http://linux.dell.com/libsmbios/main
