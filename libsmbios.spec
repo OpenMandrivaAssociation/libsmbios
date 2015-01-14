@@ -77,8 +77,9 @@ find src/ -name *.py -exec sed -i -e 's|python2|python|g' {} \;
 sed -i -e 's#-Werror ##' Makefile.*
 
 %build
-%configure2_5x \
-#	--disable-static
+export CC=gcc
+export CXX=g++
+%configure PYTHON=%__python2
 %make
 
 %check
@@ -118,5 +119,5 @@ rm -rf %{buildroot}%{_libdir}/*.a
 %{_sbindir}/*
 %{_bindir}/*
 %{_datadir}/smbios-utils
-%{py_puresitedir}/%{name}_c
+%{py2_puresitedir}/%{name}_c
 
