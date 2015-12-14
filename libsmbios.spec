@@ -3,6 +3,8 @@
 %define libsmbios_c %mklibname smbios_c %{major}
 %define devname %mklibname smbios -d
 
+%define _disable_rebuild_configure 1
+
 Summary:	Open BIOS parsing libs
 
 Name:		libsmbios
