@@ -25,6 +25,7 @@ BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	pkgconfig(cppunit)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	help2man
 
 %description
 Libsmbios is a library and utilities that can be used by client programs 
