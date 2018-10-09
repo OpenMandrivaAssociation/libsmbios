@@ -71,9 +71,9 @@ sed -i -e 's#-Werror ##' Makefile.*
 
 %build
 %configure
-%make
+%make_build
 
-%check
+#check
 #make check
 
 %install
