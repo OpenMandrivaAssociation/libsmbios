@@ -20,6 +20,7 @@ Patch0:		https://src.fedoraproject.org/rpms/libsmbios/raw/master/f/0001-libsmbio
 ExclusiveArch:	%{x86_64} ia64 %{ix86}
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	pkgconfig(cppunit)
