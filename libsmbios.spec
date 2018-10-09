@@ -18,6 +18,8 @@ Patch0:		https://src.fedoraproject.org/rpms/libsmbios/raw/master/f/0001-libsmbio
 # libsmbios only ever makes sense on intel compatible arches
 # no DMI tables on ppc, s390, etc.
 ExclusiveArch:	%{x86_64} ia64 %{ix86}
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	pkgconfig(cppunit)
@@ -41,7 +43,7 @@ to get information from standard BIOS tables, such as the SMBIOS table.
 Summary:	The "supported" sample binaries that use libsmbios
 Group:		System/Configuration/Hardware
 Provides:	%{name}-bin = %{version}-%{release}
-BuildRequires:  python-devel
+BuildRequires:	pkgconfig(python)
 
 %description utils
 Libsmbios is a library and utilities that can be used by client programs 
