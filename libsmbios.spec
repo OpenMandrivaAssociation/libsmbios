@@ -18,6 +18,8 @@ Patch0:		https://src.fedoraproject.org/rpms/libsmbios/raw/master/f/0001-libsmbio
 # libsmbios only ever makes sense on intel compatible arches
 # no DMI tables on ppc, s390, etc.
 ExclusiveArch:	%{x86_64} ia64 %{ix86}
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
